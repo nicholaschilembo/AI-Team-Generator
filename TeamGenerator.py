@@ -38,10 +38,10 @@ def generate_team_name():
     return f"{random.choice(adjectives)} {random.choice(nouns)}"
 
 def generate_person_name(region):
-    african_first_names = ["Lekan", "Nia", "Chidi", "Fatima", "Mandla", "Zahara", "Kwame", "Amara", "Ifunanya", "Obi"]
-    european_first_names = ["Sophia", "Liam", "Emma", "Oliver", "Isabella", "Noah", "Amelia", "Ethan", "Ava", "Mia"]
-    asian_first_names = ["Aarav", "Aisha", "Ji-hoon", "Mei", "Akio", "Anushka", "Hiroshi", "Zara", "Rohan", "Sakura"]
-    middle_eastern_first_names = ["Yusuf", "Layla", "Khaled", "Leila", "Amin", "Nour", "Zayd", "Aisha", "Amir", "Samira"]
+    african_first_names = ["Lekan", "Nia", "Chidi", "Fatima", "Mandla", "Zahara", "Kwame", "Amara", "Ifunanya", "Obi", "Ali", "Zainab"]
+    european_first_names = ["Sophia", "Liam", "Emma", "Oliver", "Isabella", "Noah", "Amelia", "Ethan", "Ava", "Mia", "James", "Maria"]
+    asian_first_names = ["Aarav", "Aisha", "Ji-hoon", "Mei", "Akio", "Anushka", "Hiroshi", "Zara", "Rohan", "Sakura", "Surya", "Lalita"]
+    middle_eastern_first_names = ["Yusuf", "Layla", "Khaled", "Leila", "Amin", "Nour", "Zayd", "Aisha", "Amir", "Samira", "Mustafa", "Nadia"]
     
     first_name_list = []
     if region == "African":
