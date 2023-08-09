@@ -1,5 +1,9 @@
 import streamlit as st
 import random
+import openai
+
+# Set your OpenAI API key
+openai.api_key = "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"
 
 class Player:
     def __init__(self, first_name, last_name, age, position):
@@ -16,14 +20,24 @@ class Team:
         self.squad = squad
 
 def generate_team_name():
-    adjectives = ["Fierce", "Mighty", "Swift", "Bold", "Dynamic", "Radiant", "Thundering", "Energetic", "Elegant"]
-    nouns = ["Lions", "Dragons", "Phoenixes", "Titans", "Gladiators", "Warriors", "Cobras", "Hurricanes", "Raiders"]
-    return f"{random.choice(adjectives)} {random.choice(nouns)}"
+    prompt = "Generate a unique soccer team name:"
+    response = openai.Completion.create(
+        engine="text-davinci-003",  # Choose the appropriate engine
+        prompt=prompt,
+        max_tokens=30,
+        temperature=0.7
+    )
+    return response.choices[0].text.strip()
 
 def generate_person_name():
-    first_names = ["John", "Emily", "Michael", "Emma", "David", "Sarah", "Daniel", "Olivia", "Robert", "Sophia"]
-    last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"]
-    return f"{random.choice(first_names)} {random.choice(last_names)}"
+    prompt = "Generate a unique person name:"
+    response = openai.Completion.create(
+        engine="text-davinci-003",  # Choose the appropriate engine
+        prompt=prompt,
+        max_tokens=30,
+        temperature=0.7
+    )
+    return response.choices[0].text.strip()
 
 def generate_player():
     age = random.randint(18, 40)
@@ -59,13 +73,6 @@ def main():
         st.session_state.team_manager = new_team_manager
         st.session_state.team_owner = new_team_owner
         st.session_state.team_squad = new_team_squad
-        st.write("### New Soccer Team:")
-        st.write(f"Team Name: {new_team_name}")
-        st.write(f"Manager: {new_team_manager}")
-        st.write(f"Owner: {new_team_owner}")
-        st.write("Team Squad:")
-        for i, player in enumerate(new_team_squad, start=1):
-            st.write(f"{i}. {player.first_name} {player.last_name} (Age: {player.age}, Position: {player.position})")
 
 if __name__ == "__main__":
     main()
