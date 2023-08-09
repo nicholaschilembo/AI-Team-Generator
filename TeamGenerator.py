@@ -1,0 +1,42 @@
+import streamlit as st
+import random
+
+def generate_team_name():
+    adjectives = ["Fierce", "Mighty", "Swift", "Bold", "Dynamic", "Radiant", "Thundering", "Energetic", "Elegant"]
+    nouns = ["Lions", "Dragons", "Phoenixes", "Titans", "Gladiators", "Warriors", "Cobras", "Hurricanes", "Raiders"]
+    return f"{random.choice(adjectives)} {random.choice(nouns)}"
+
+def generate_player_name():
+    first_names = ["Alex", "Emma", "Liam", "Olivia", "Noah", "Ava", "Sophia", "Jackson", "Mia", "Lucas"]
+    last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"]
+    return f"{random.choice(first_names)} {random.choice(last_names)}"
+
+def generate_team_squad():
+    squad = [generate_player_name() for _ in range(11)]
+    return squad
+
+def main():
+    st.title("Soccer Team and Squad Generator App")
+    
+    team_name = st.session_state.get('team_name', generate_team_name())
+    team_squad = st.session_state.get('team_squad', generate_team_squad())
+    
+    st.write("### Current Soccer Team:")
+    st.write(f"Team Name: {team_name}")
+    st.write("Team Squad:")
+    for i, player in enumerate(team_squad, start=1):
+        st.write(f"{i}. {player}")
+    
+    if st.button("Generate New Team and Squad"):
+        new_team_name = generate_team_name()
+        new_team_squad = generate_team_squad()
+        st.session_state.team_name = new_team_name
+        st.session_state.team_squad = new_team_squad
+        st.write("### New Soccer Team:")
+        st.write(f"Team Name: {new_team_name}")
+        st.write("Team Squad:")
+        for i, player in enumerate(new_team_squad, start=1):
+            st.write(f"{i}. {player}")
+
+if __name__ == "__main__":
+    main()
