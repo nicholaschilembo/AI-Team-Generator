@@ -1,5 +1,7 @@
 import streamlit as st
 import random
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 class Player:
