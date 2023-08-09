@@ -99,12 +99,12 @@ def main():
             labels = list(player.stats.keys())
             sizes = list(player.stats.values())
             colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']  # Add more colors if needed
-            explode = (0.1, 0, 0, 0)  # explode 1st slice
+            explode = [0.1] * len(labels)  # Equal exploding for all slices
             fig1, ax1 = plt.subplots()
             ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
             ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
             st.pyplot(fig1)
-             
+            
     st.write("Team Squad:")
     for i, player in enumerate(team_squad, start=1):
         st.write(f"{i}. {player.first_name} {player.last_name} (Age: {player.age}, Position: {player.position})")
