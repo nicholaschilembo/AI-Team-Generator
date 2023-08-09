@@ -3,7 +3,7 @@ import random
 import openai
 
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = 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
 
 class Player:
     def __init__(self, first_name, last_name, age, position):
